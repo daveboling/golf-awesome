@@ -1,20 +1,5 @@
 /* Empty. Add your own CSS if you like */
 
-#bounds{
-  position: relative;
-  height: 200px;
-  border:1px solid black;
-}
-
-.ball{
-  background-color: black;
-  border:1px solid red;
-  height: 50px;
-  width: 50px;
-  border-radius: 100%;
-}
-
-.y, .x {
-  height: 20px;
-  width: 20px;
+#canvas {
+  background-color: green;
 }
