@@ -4,32 +4,68 @@
 
   main.controller('MainCtrl', ['$scope', function($scope){
     $scope.title = 'NSS-Ball';
-    $scope.gameStarted = false;
-    function onSuccess(speed){
-      var x = speed.x * 50,
-          y = speed.y * 5;
-      //console.log((speed.y * 100), (speed.x * 100), (speed.z * 100));
-      if(x < 0 || x > 100){
-        x = 0;
-      }else if(y < 0 || y > 100){
-        y = 0;
+
+    $(document).ready(function(){
+    var canvas,
+    ctx,
+    x = 500,
+    y = 500,
+    dx = 2,
+    dy = 4,
+    WIDTH = 500,
+    HEIGHT = 500;
+
+    function circle(x,y,r){
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI*2, true);
+      ctx.fill();
+    }
+
+    function rect(x,y,w,h){
+      ctx.beginPath();
+      ctx.rect(x,y,w,h);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function clear(){
+      ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    }
+
+    function init(){
+      canvas = document.getElementById('canvas');
+      ctx = canvas.getContext('2d');
+      return setInterval(draw, 10);
+    }
+
+
+    function draw(){
+      clear();
+      ctx.fillStyle = '#FAF7F8';
+      rect(0,0,WIDTH,HEIGHT);
+      ctx.fillStyle = '#444444';
+      circle(x, y, 10);
+
+      if (x + dx > WIDTH || x + dx < 0){
+        dx = -dx;
       }
-      $scope.x = x;
-      $scope.y = y;
-      $('.ball').css('margin-left', x + '%');
-      $('.ball').css('margin-top', y + '%');
+      if (y + dy > HEIGHT || y + dy < 0){
+        dy = -dy;
+      }
+
+      x += dx;
+      y += dy;
     }
 
-    function onError(){
-        alert('onError!');
-    }
+    init();
 
-    $scope.start = function(){
-      $scope.gameStarted = true;
-      var options = {frequency: 10};
-      navigator.gyroscope.watchAngularSpeed(onSuccess, onError, options);
-    };
+    });
+
+
 
 
   }]);
 })();
+
+
+

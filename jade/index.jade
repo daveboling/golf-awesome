@@ -12,12 +12,4 @@ head
     script(src='js/app.js')
     script(src='js/main.js')
   body(ng-app='nss-ball' ng-controller='MainCtrl')
-    .row(ng-hide='gameStarted')
-      .col
-      button(ng-click='start()') Start
-    .row(ng-show='gameStarted')
-      .col
-        #bounds
-            .ball
-            .x {{x}}
-            .y {{y}}
+    canvas#canvas

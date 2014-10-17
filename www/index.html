@@ -13,17 +13,5 @@
   <script src="js/main.js"></script>
 </head>
 <body ng-app="nss-ball" ng-controller="MainCtrl">
-  <div ng-hide="gameStarted" class="row">
-    <div class="col"></div>
-    <button ng-click="start()">Start</button>
-  </div>
-  <div ng-show="gameStarted" class="row">
-    <div class="col">
-      <div id="bounds">
-        <div class="ball"></div>
-        <div class="x">{{x}}</div>
-        <div class="y">{{y}}</div>
-      </div>
-    </div>
-  </div>
+  <canvas id="canvas"></canvas>
 </body>
