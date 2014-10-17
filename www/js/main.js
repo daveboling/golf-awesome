@@ -11,8 +11,8 @@
       ctx,
       x = 20,
       y = 20,
-      dx = 5,
-      dy = 5,
+      dx = 1,
+      dy = 1,
       WIDTH = window.innerWidth,
       HEIGHT = window.innerHeight;
 
@@ -42,11 +42,13 @@
             resizeCanvas();
           }
         //ctx = canvas.getContext('2d');
-        return setInterval(draw, 10);
+        return setInterval(draw, 33);
       }
 
       window.addEventListener('deviceorientation', function(data){
         $scope.data = data;
+        dx += data.gamma / 2;
+        dy += data.beta / 2;
         $scope.$digest();
       });
 
@@ -58,23 +60,23 @@
         ctx.fillStyle = 'white';
         circle(x, y, 10);
 
+        /*
         if (x + dx > WIDTH || x + dx < 0){
           dx = -dx;
         }
         if (y + dy > HEIGHT || y + dy < 0){
           dy = -dy;
-        }
+        }*/
 
-        y = dx * $scope.data.beta;
-        x = dy * $scope.data.gamma;
-        console.log(y);
+        y = dy;
+        x = dx;
+        console.log(dx);
       }
 
       function resizeCanvas(){
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       }
-
 
       init();
 
