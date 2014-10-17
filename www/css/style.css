@@ -1,5 +1,12 @@
 /* Empty. Add your own CSS if you like */
 
-#canvas {
-  background-color: green;
+
+
+.ball{
+  margin:0px auto;
+  background-color: black;
+  border:1px solid red;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
 }
