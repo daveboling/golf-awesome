@@ -9,12 +9,15 @@
     $(document).ready(function(){
       var canvas,
       ctx,
-      x = 20,
-      y = 20,
-      dx = 5,
-      dy = 5,
+      x = 0,
+      y = 0,
       WIDTH = window.innerWidth,
-      HEIGHT = window.innerHeight;
+      HEIGHT = window.innerHeight,
+      x2 = Math.random()*WIDTH,
+      y2 = Math.random()*HEIGHT,
+      dx = 5,
+      dy = 5;
+
 
       function circle(x,y,r){
         ctx.beginPath();
@@ -47,6 +50,8 @@
 
       window.addEventListener('deviceorientation', function(data){
         $scope.data = data;
+        dx += data.gamma/5;
+        dy += data.beta/5;
         $scope.$digest();
       });
 
@@ -54,20 +59,26 @@
       function draw(){
         clear();
         ctx.fillStyle = 'green';
-        rect(0,0,WIDTH,HEIGHT);
+        rect(0,0, WIDTH, HEIGHT);
+        ctx.fillStyle = 'black';
+        circle(x2, y2, 30, 30);
         ctx.fillStyle = 'white';
         circle(x, y, 10);
 
-        if (x + dx > WIDTH || x + dx < 0){
-          dx = -dx;
+        if (dx > WIDTH || dx < 0){
+          dx = x;
         }
-        if (y + dy > HEIGHT || y + dy < 0){
-          dy = -dy;
+        if (dy > HEIGHT ||dy < 0){
+          dy = y;
         }
 
-        y = dx * $scope.data.beta;
-        x = dy * $scope.data.gamma;
-        console.log(y);
+        x = dx;
+        y= dy;
+
+        if( dx >= x2 - 30 && dx <= x2 + 30 && dy >= y2 -30 && dy <=  y2 + 30) {
+          console.log('you win!');
+        }
+
       }
 
       function resizeCanvas(){
@@ -75,9 +86,13 @@
         canvas.height = window.innerHeight;
       }
 
+      console.log('width>>>>>>>>>>>>', WIDTH);
+      console.log('height>>>>>>>>>>>>', HEIGHT);
+
 
       init();
 
     });
+
   }]);
 })();
