@@ -4,14 +4,15 @@
 
   main.controller('MainCtrl', ['$scope', function($scope){
     $scope.title = 'NSS-Ball';
+    $scope.data = {};
 
     $(document).ready(function(){
       var canvas,
       ctx,
-      x = 0,
-      y = 0,
-      dx = 1,
-      dy = 10,
+      x = 20,
+      y = 20,
+      dx = 5,
+      dy = 5,
       WIDTH = window.innerWidth,
       HEIGHT = window.innerHeight;
 
@@ -40,16 +41,21 @@
             window.addEventListener('orientationchange', resizeCanvas, true);
             resizeCanvas();
           }
-        ctx = canvas.getContext('2d');
+        //ctx = canvas.getContext('2d');
         return setInterval(draw, 10);
       }
+
+      window.addEventListener('deviceorientation', function(data){
+        $scope.data = data;
+        $scope.$digest();
+      });
 
 
       function draw(){
         clear();
-        ctx.fillStyle = '#FAF7F8';
+        ctx.fillStyle = 'green';
         rect(0,0,WIDTH,HEIGHT);
-        ctx.fillStyle = '#444444';
+        ctx.fillStyle = 'white';
         circle(x, y, 10);
 
         if (x + dx > WIDTH || x + dx < 0){
@@ -59,14 +65,16 @@
           dy = -dy;
         }
 
-        x += dx;
-        y += dy;
+        y = dx * $scope.data.beta;
+        x = dy * $scope.data.gamma;
+        console.log(y);
       }
 
       function resizeCanvas(){
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       }
+
 
       init();
 
