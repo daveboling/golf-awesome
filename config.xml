@@ -5,10 +5,11 @@
         
     </description>
   <author email="team4@nss.com" href="github.com/kadowki">
-      Shrut, Michael, Juan, Dave
+      Shruti, Michael, Juan, Dave
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <preference name="orientation" value="portrait" />
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
