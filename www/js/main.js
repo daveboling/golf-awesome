@@ -29,6 +29,13 @@
         ctx.fill();
       }
 
+      function hole(x,y,w,h){
+        ctx.beginPath();
+        ctx.rect(x,y,w,h);
+        ctx.closePath();
+        ctx.fill();
+      }
+
       function clear(){
         ctx.clearRect(0, 0, WIDTH, HEIGHT);
       }
@@ -42,7 +49,7 @@
             resizeCanvas();
           }
         //ctx = canvas.getContext('2d');
-        return setInterval(draw, 33);
+        return setInterval(draw, 10);
       }
 
       window.addEventListener('deviceorientation', function(data){
@@ -57,20 +64,20 @@
         clear();
         ctx.fillStyle = 'green';
         rect(0,0,WIDTH,HEIGHT);
+        ctx.fillStyle = 'black';
+        hole(50, 50, 100, 100);
         ctx.fillStyle = 'white';
         circle(x, y, 10);
 
-        /*
-        if (x + dx > WIDTH || x + dx < 0){
-          dx = -dx;
+        if (dx > WIDTH || dx < 0){
+          dx = x;
         }
-        if (y + dy > HEIGHT || y + dy < 0){
-          dy = -dy;
-        }*/
+        if (dy > HEIGHT || dy < 0){
+          dy = y;
+        }
 
         y = dy;
         x = dx;
-        console.log(dx);
       }
 
       function resizeCanvas(){
