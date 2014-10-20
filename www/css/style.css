@@ -31,12 +31,13 @@
 }
 
 .clock{
+  z-index: 999;
   position: fixed;
-  top:0;
+  bottom:25px;
   left:0;
   right:0;
   text-align:center;
   background-color:rgba(0, 0, 0, 0);
   color: white;
-  font-size: 2em;
+  font-size: 5em;
 }

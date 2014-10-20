@@ -23,8 +23,8 @@
     y2 = Math.random()*(HEIGHT - 20),
     dx = 5,
     dy = 5,
-    dx2 = 5,
-    dy2 = 5,
+    dx2 = 13,
+    dy2 = 13,
     activeGame,
     accel,
     ball = new Image(),
@@ -66,8 +66,8 @@
 
     function onAccelSuccess(data){
       $scope.data = data;
-      dx += -data.x / 1.2;
-      dy += data.y / 1.2;
+      dx += -data.x / 0.8;
+      dy += data.y / 0.8;
       $scope.$digest();
     }
 
@@ -105,8 +105,8 @@
       x = dx;
       y = dy;
 
-      x2 += dx2;
-      y2 += dy2;
+      x2 += (Math.random() * 5) + dx2;
+      y2 += (Math.random() * 5) + dy2;
 
       //game logic
       //check if ball has touched a zombie or the hole
@@ -184,8 +184,8 @@
       //generate new random hole positon
       x2 = Math.random()*(WIDTH - 50);
       y2 = Math.random()*(HEIGHT - 50);
-      dx2 = 5,
-      dy2 = 5,
+      dx2 = 13,
+      dy2 = 13,
 
       $scope.clock = 30;
       $scope.startGame();
