@@ -13,9 +13,11 @@ html
     script(src='js/main.js')
   body(ng-app='nss-ball' ng-controller='MainCtrl')
     //Menu State
-    .row(ng-show='isMenu')
-      .col Zombie Golf - Par 4 Brainz
-      .col: button(ng-click='startGame()') Start Game!
+    #menu(ng-show='isMenu')
+      .row
+        .col Xtreme Golf
+      .row
+        .col: button(ng-click='startGame()') Start Game!
 
     //Is Playing State
     canvas#canvas(ng-show='gameIsActive')

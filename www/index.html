@@ -14,10 +14,14 @@
   </head>
   <body ng-app="nss-ball" ng-controller="MainCtrl">
     <!--Menu State-->
-    <div ng-show="isMenu" class="row">
-      <div class="col">Zombie Golf - Par 4 Brainz</div>
-      <div class="col">
-        <button ng-click="startGame()">Start Game!</button>
+    <div id="menu" ng-show="isMenu">
+      <div class="row">
+        <div class="col">Xtreme Golf</div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button ng-click="startGame()">Start Game!</button>
+        </div>
       </div>
     </div>
     <!--Is Playing State-->
