@@ -27,8 +27,15 @@
     <!--Is Playing State-->
     <canvas id="canvas" ng-show="gameIsActive"></canvas>
     <!--Game Over States-->
-    <div ng-show="isGameOver" class="row">
-      <div class="col">Result: {{results}} </div>
+    <div id="end" ng-show="isGameOver">
+      <div class="row">
+        <div class="col">Result: {{results}}</div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button ng-click="startGame()">Again?</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

@@ -22,17 +22,17 @@
     y2 = Math.random()*(HEIGHT - 20),
     dx = 5,
     dy = 5,
-    dx2 = 3,
-    dy2 = 3,
+    dx2 = 5,
+    dy2 = 5,
     activeGame,
     accel,
     ball = new Image(),
     hole = new Image(),
     course = new Image();
 
-    ball.src = '../img/assets/ball.png';
-    hole.src = '../img/assets/hole.png';
-    course.src = '../img/assets/grass.jpg';
+    ball.src = './img/assets/ball.png';
+    hole.src = './img/assets/hole.png';
+    course.src = './img/assets/grass.jpg';
 
     function circle(x,y,r){
       ctx.beginPath();
@@ -86,18 +86,14 @@
 
       activeGame = setInterval(draw, 10);
       return activeGame;
+
     }
 
     function draw(){
       clear(); //clear canvas on each pass and reanimate like Linkin Park.
-      //ctx.fillStyle = 'green';
       ctx.drawImage(course, 0, 0, WIDTH, HEIGHT);
-      //ctx.fillStyle = 'black';
-      //circle(x2, y2, 20);
-      ctx.drawImage(hole, x2, y2, 60, 60);
-      //ctx.fillStyle = 'white';
-      //circle(x, y, 10);
-      ctx.drawImage(ball, x, y, 30, 30);
+      ctx.drawImage(hole, x2 - 30, y2 - 30, 60, 60);
+      ctx.drawImage(ball, x - 20, y - 20, 30, 30);
 
       //bounds checking
       checkBallBounds();
@@ -122,7 +118,7 @@
 
     function checkBallPosition(){
       //hole check
-      if(dx >= x2 - 10 && dx <= x2 + 10 && dy >= y2 -10 && dy <=  y2 + 10){
+      if(dx >= x2 - 20 && dx <= x2 + 20 && dy >= y2 - 20 && dy <=  y2 + 20){
         //stop the loop
         clearInterval(activeGame);
         $scope.gameIsActive = false;
@@ -133,7 +129,7 @@
     }
 
     function checkBallBounds(){
-      if (x2 + dx > WIDTH || x2 + dx < 0){
+      if (dx > WIDTH || dx < 0){
         dx = x;
       }
       if (dy > HEIGHT ||dy < 0){

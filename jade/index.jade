@@ -23,5 +23,9 @@ html
     canvas#canvas(ng-show='gameIsActive')
 
     //Game Over States
-    .row(ng-show='isGameOver')
-      .col Result: {{results}} 
+    #end(ng-show='isGameOver')
+      .row
+        .col Result: {{results}}
+      .row
+        .col: button(ng-click='startGame()') Again?
+
