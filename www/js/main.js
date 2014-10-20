@@ -58,14 +58,14 @@
     }
 
     function getAcceleration(){
-      var options = {frequency: 10};
+      var options = {frequency: 12};
       accel = navigator.accelerometer.watchAcceleration(onAccelSuccess, onError, options);
     }
 
     function onAccelSuccess(data){
       $scope.data = data;
-      dx += -data.x / 2;
-      dy += data.y / 2;
+      dx += -data.x / 1.2;
+      dy += data.y / 1.2;
       $scope.$digest();
     }
 
@@ -84,7 +84,7 @@
           resizeCanvas();
         }
 
-      activeGame = setInterval(draw, 10);
+      activeGame = setInterval(draw, 16);
       return activeGame;
 
     }
@@ -129,19 +129,19 @@
     }
 
     function checkBallBounds(){
-      if (dx > WIDTH || dx < 0){
+      if (dx > WIDTH - 20 || dx < 0){
         dx = x;
       }
-      if (dy > HEIGHT ||dy < 0){
+      if (dy > HEIGHT - 20 ||dy < 0){
         dy = y;
       }
     }
 
     function checkHoleBounds(){
-      if (x2 + dx2 > WIDTH || x2 + dx2 < 0){
+      if (x2 + dx2 > WIDTH - 25 || x2 + dx2 < 0){
         dx2 = -dx2;
       }
-      if (y2 + dy2 > HEIGHT || y2 + dy2 < 0){
+      if (y2 + dy2 > HEIGHT - 25 || y2 + dy2 < 0){
         dy2 = -dy2;
       }
     }
@@ -150,9 +150,26 @@
     $scope.startGame = function(){
       $scope.gameIsActive = true;
       $scope.isMenu = false;
+      $scope.GameOver = false;
 
       init();
     };
+
+    $scope.newGame = function(){
+      //move back to 0 0
+      x = 0;
+      y = 0;
+      dx = 5;
+      dy = 5;
+
+      //generate new random hole positon
+      x2 = Math.random()*(WIDTH - 50);
+      y2 = Math.random()*(HEIGHT - 50);
+      dx2 = 5,
+      dy2 = 5,
+
+      $scope.startGame();
+    }
 
 
   }]);

@@ -16,11 +16,13 @@
     <!--Menu State-->
     <div id="menu" ng-show="isMenu">
       <div class="row">
-        <div class="col">Xtreme Golf</div>
+        <div class="col">
+          <div class="xtreme">Xtreme Golf</div>
+        </div>
       </div>
       <div class="row">
         <div class="col">
-          <button ng-click="startGame()">Start Game!</button>
+          <button ng-click="startGame()" class="full">Start Game!</button>
         </div>
       </div>
     </div>
@@ -29,11 +31,13 @@
     <!--Game Over States-->
     <div id="end" ng-show="isGameOver">
       <div class="row">
-        <div class="col">Result: {{results}}</div>
+        <div class="col">
+          <div class="xtreme">Result: {{results}}</div>
+        </div>
       </div>
       <div class="row">
         <div class="col">
-          <button ng-click="startGame()">Again?</button>
+          <button ng-click="newGame()" class="full">Again?</button>
         </div>
       </div>
     </div>

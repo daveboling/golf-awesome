@@ -15,9 +15,10 @@ html
     //Menu State
     #menu(ng-show='isMenu')
       .row
-        .col Xtreme Golf
+        .col
+          .xtreme Xtreme Golf
       .row
-        .col: button(ng-click='startGame()') Start Game!
+        .col: button.full(ng-click='startGame()') Start Game!
 
     //Is Playing State
     canvas#canvas(ng-show='gameIsActive')
@@ -25,7 +26,8 @@ html
     //Game Over States
     #end(ng-show='isGameOver')
       .row
-        .col Result: {{results}}
+        .col
+          .xtreme Result: {{results}}
       .row
-        .col: button(ng-click='startGame()') Again?
+        .col: button.full(ng-click='newGame()') Again?
 
