@@ -27,7 +27,10 @@
       </div>
     </div>
     <!--Is Playing State-->
-    <canvas id="canvas" ng-show="gameIsActive"></canvas>
+    <div id="game" ng-show="gameIsActive">
+      <div class="clock">{{clock}}</div>
+      <canvas id="canvas" ng-show="gameIsActive"></canvas>
+    </div>
     <!--Game Over States-->
     <div id="end" ng-show="isGameOver">
       <div class="row">

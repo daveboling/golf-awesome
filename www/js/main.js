@@ -6,6 +6,7 @@
     $scope.title = 'NSS-Ball';
     $scope.data = {};
     $scope.results = '';
+    $scope.clock = 30;
 
     //Angular style game states
     $scope.gameIsActive = false;
@@ -28,7 +29,8 @@
     accel,
     ball = new Image(),
     hole = new Image(),
-    course = new Image();
+    course = new Image(),
+    timer;
 
     ball.src = './img/assets/ball.png';
     hole.src = './img/assets/hole.png';
@@ -84,6 +86,8 @@
           resizeCanvas();
         }
 
+      timer = $interval(updateTimer, 1000);
+
       activeGame = setInterval(draw, 16);
       return activeGame;
 
@@ -121,10 +125,10 @@
       if(dx >= x2 - 20 && dx <= x2 + 20 && dy >= y2 - 20 && dy <=  y2 + 20){
         //stop the loop
         clearInterval(activeGame);
+        $interval.cancel(timer);
         $scope.gameIsActive = false;
         $scope.isGameOver = true;
         $scope.results = 'You win!';
-        $scope.$digest();
       }
     }
 
@@ -144,6 +148,21 @@
       if (y2 + dy2 > HEIGHT - 25 || y2 + dy2 < 0){
         dy2 = -dy2;
       }
+    }
+
+    function updateTimer(){
+      $scope.clock--;
+      if($scope.clock === 0){
+        gameOverYouLose();
+      }
+    }
+
+    function gameOverYouLose(){
+      clearInterval(activeGame);
+      $interval.cancel(timer);
+      $scope.gameIsActive = false;
+      $scope.isGameOver = true;
+      $scope.results = 'You lose. Try again.';
     }
 
     //Angular functions
@@ -168,6 +187,7 @@
       dx2 = 5,
       dy2 = 5,
 
+      $scope.clock = 30;
       $scope.startGame();
     }
 

@@ -29,3 +29,14 @@
   position: absolute;
   top: 25%;
 }
+
+.clock{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  text-align:center;
+  background-color:rgba(0, 0, 0, 0);
+  color: white;
+  font-size: 2em;
+}

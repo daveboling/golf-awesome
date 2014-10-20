@@ -21,7 +21,9 @@ html
         .col: button.full(ng-click='startGame()') Start Game!
 
     //Is Playing State
-    canvas#canvas(ng-show='gameIsActive')
+    #game(ng-show='gameIsActive')
+        .clock {{clock}}
+        canvas#canvas(ng-show='gameIsActive')
 
     //Game Over States
     #end(ng-show='isGameOver')
