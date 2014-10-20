@@ -86,7 +86,7 @@
           resizeCanvas();
         }
 
-      timer = $interval(updateTimer, 1000);
+      timer = $interval(updateTimer, 800);
 
       activeGame = setInterval(draw, 16);
       return activeGame;
@@ -122,7 +122,7 @@
 
     function checkBallPosition(){
       //hole check
-      if(dx >= x2 - 20 && dx <= x2 + 20 && dy >= y2 - 20 && dy <=  y2 + 20){
+      if(dx >= x2 - 12 && dx <= x2 + 12 && dy >= y2 - 12 && dy <=  y2 + 12){
         //stop the loop
         clearInterval(activeGame);
         $interval.cancel(timer);
